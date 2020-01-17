@@ -10,7 +10,6 @@ export const useInterval = (callback, reset) => {
   useEffect(() => {
     function tick() {
       savedCallback.current();
-      console.log('running');
     }
 
     let id = setInterval(tick, 1000);
