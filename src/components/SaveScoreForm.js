@@ -8,7 +8,6 @@ const SaveScoreForm = ({ score, scoreSaved }) => {
 
   const onUsernameChange = e => {
     setUsername(e.target.value);
-    console.log(username);
   };
 
   const saveHighScore = e => {

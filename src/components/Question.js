@@ -14,7 +14,8 @@ const Question = ({
     setAnswering(true);
     setSelectedAnswer(selectedAnswer);
 
-    const classToApply = selectedAnswer === answer ? 'correct' : 'incorrect';
+    const classToApply =
+      selectedAnswer === answer ? 'correct pulse' : 'incorrect shake';
     setClassToApply(classToApply);
 
     const bonus = selectedAnswer === answer ? 10 : 0;
@@ -33,7 +34,7 @@ const Question = ({
       {answerChoices.map((choice, index) => (
         <div
           key={index}
-          className={`choice-container ${selectedAnswer === index &&
+          className={`choice-container animated ${selectedAnswer === index &&
             classToApply}`}
           onClick={() => checkAnswer(index)}
         >

@@ -34,10 +34,10 @@ const HighScoresPage = () => {
         <div id='loader'></div>
       ) : (
         <>
-          <h1>High Scores</h1>
+          <h1 className='animated bounceIn'>High Scores</h1>
           <div id='highScoresList'>
             {scores.map(score => (
-              <li key={score.key} className='high-score'>
+              <li key={score.key} className='high-score animated fadeInUp'>
                 {score.name} - {score.score}
               </li>
             ))}
