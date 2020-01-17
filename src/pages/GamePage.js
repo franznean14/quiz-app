@@ -4,6 +4,7 @@ import Question from '../components/Question';
 import { loadQuestions } from '../helpers/QuestionsHelper';
 import HUD from '../components/HUD';
 import SaveScoreForm from '../components/SaveScoreForm';
+import { useInterval } from '../helpers/ScoreHelper';
 
 const GamePage = ({ history }) => {
   const [questions, setQuestions] = useState([]);
@@ -12,7 +13,14 @@ const GamePage = ({ history }) => {
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [done, setDone] = useState(false);
+  const [timeSpentAnswering, setTimeSpentAnswering] = useState(20);
 
+  useInterval(() => {
+    if (timeSpentAnswering > 1) {
+      setTimeSpentAnswering(timeSpentAnswering - 1);
+    } else {
+    }
+  }, [currentQuestion]);
   useEffect(() => {
     loadQuestions()
       .then(setQuestions)
@@ -25,6 +33,7 @@ const GamePage = ({ history }) => {
         setDone(true);
         setScore(score + bonus);
       }
+      setTimeSpentAnswering(20);
       const randomQuestionIndex = Math.floor(Math.random() * questions.length);
       const currentQuestion = questions[randomQuestionIndex];
       const remainingQuestions = [...questions];
@@ -33,7 +42,7 @@ const GamePage = ({ history }) => {
       setQuestions(remainingQuestions);
       setCurrentQuestion(currentQuestion);
       setIsLoading(false);
-      setScore(score + bonus);
+      setScore(score + bonus * timeSpentAnswering);
       setQuestionNumber(questionNumber + 1);
     },
     [
@@ -43,7 +52,8 @@ const GamePage = ({ history }) => {
       setQuestions,
       setIsLoading,
       setCurrentQuestion,
-      setQuestionNumber
+      setQuestionNumber,
+      timeSpentAnswering
     ]
   );
 
