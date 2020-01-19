@@ -1,10 +1,8 @@
 import React from 'react';
 import './App.css';
 
-import HomePage from './pages/HomePage';
+import { HomePage, GamePage, HighScoresPage } from './pages/';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import GamePage from './pages/GamePage';
-import HighScoresPages from './pages/HighScoresPage';
 
 function App() {
   return (
@@ -12,7 +10,7 @@ function App() {
       <div className='container'>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/game' component={GamePage} />
-        <Route exact path='/highscores' component={HighScoresPages} />
+        <Route exact path='/highscores' component={HighScoresPage} />
       </div>
     </Router>
   );

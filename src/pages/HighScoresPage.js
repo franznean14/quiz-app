@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useFirebase } from '../components/Firebase/FirebaseContext';
+import { useFirebase } from '../Firebase/';
 
 const HighScoresPage = () => {
   const firebase = useFirebase();
